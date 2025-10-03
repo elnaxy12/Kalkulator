@@ -69,7 +69,7 @@ def buat_tombol(teks, r, c, w=2, h=2, warna="#222831", cmd=None, columnspan=1, r
 
 # Baris 1
 buat_tombol("C", 1, 0, warna="#FF5722", cmd=hapus_all)
-for i, op in enumerate(("/", "X", "-")):
+for i, op in enumerate(("/", "*", "-")):
     buat_tombol(op, 1, i+1, cmd=lambda t=op: tekan(t))
 
 # Baris 2-3 angka
