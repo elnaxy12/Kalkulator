@@ -19,7 +19,6 @@ def format_input(event=None):
 
     new_text = "".join(formatted_parts)
 
-    # update entry
     entry.delete(0, tk.END)
     entry.insert(0, new_text)
 
