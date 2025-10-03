@@ -23,15 +23,33 @@ def format_input(event=None):
     entry.insert(0, new_text)
 
 def tekan(t):
+    text = entry.get()
+    
+    if t in "+-*/":
+        if not text:  
+            return
+        if text[-1] in "+-*/":  
+            entry.delete(len(text)-1, tk.END)
+            entry.insert(tk.END, t)
+            return
+    
+    if t == ",":  
+        if not text or not text[-1].isdigit():
+            entry.insert(tk.END, "0,")
+            return
+        
+        parts = re.split(r'[+\-*/]', text)
+        last_number = parts[-1]
+        
+        if "," in last_number or "," in last_number:
+            return
+    
     entry.insert(tk.END, t)
     format_input()
 
+
 def hapus_all():
     entry.delete(0, tk.END)
-
-def hapus_satu():
-    if entry.get():
-        entry.delete(len(entry.get())-1, tk.END)
 
 def hitung():
     try:
@@ -103,8 +121,8 @@ for c, n in enumerate(("1", "2", "3")):
 buat_tombol("=", 4, 3, h=5, warna="#00ADB5", cmd=hitung, rowspan=2)
 
 # Baris 5
-buat_tombol("0", 5, 0, cmd=lambda: tekan("0"))
-buat_tombol("⌫", 5, 1, w=2, warna="#FF9800", cmd=hapus_satu, columnspan=2)
+buat_tombol("0", 5, 0, cmd=lambda: tekan("0"), columnspan=2)
+buat_tombol(",", 5, 2, cmd=lambda: tekan(","))
 
 # ==============================
 #  RESPONSIVE GRID
