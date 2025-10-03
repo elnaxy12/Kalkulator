@@ -8,4 +8,4 @@ Mendukung input angka dengan pemisah ribuan (`1.000.000`) dan operasi dasar mate
 
 ## Cara Menjalankan
 ```bash
-python kalkulator.py
+python app.py
