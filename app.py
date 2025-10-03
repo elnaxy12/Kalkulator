@@ -4,12 +4,11 @@ import re
 def format_input(event=None):
     text = entry.get()
 
-    # pisahkan input dengan operator (tapi tetap simpan operatornya)
     parts = re.split(r'([+\-*/])', text)
 
     formatted_parts = []
     for part in parts:
-        if part.isdigit():  # kalau angka murni
+        if part.isdigit():  
             formatted = "{:,}".format(int(part)).replace(",", ".")
             formatted_parts.append(formatted)
         else:
@@ -17,10 +16,9 @@ def format_input(event=None):
 
     new_text = "".join(formatted_parts)
 
-    # update entry
     entry.delete(0, tk.END)
     entry.insert(0, new_text)
-    
+
 def tekan(t):
     entry.insert(tk.END, t)
     format_input()
